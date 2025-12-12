@@ -159,4 +159,51 @@ nav {
 }
 
 .feature-card h3 {
-    font-size: 
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: white;
+    opacity: 0.8;
+    margin-top: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .hero h2 {
+        font-size: 36px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+    }
+    
+    .cta-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
