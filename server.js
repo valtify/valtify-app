@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Database connection (Free PostgreSQL from Neon)
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // ← Use environment variable
+  connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 
@@ -36,7 +36,7 @@ async function initDB() {
     `);
     console.log('✅ Database ready');
   } catch (error) {
-    console.log('⚠️ Using fallback database');
+    console.log('⚠️ Database init error:', error.message);
   }
 }
 
@@ -47,7 +47,7 @@ app.use(require('cors')());
 app.use(express.json());
 
 // JWT secret
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-only-for-dev';
+const JWT_SECRET = process.env.JWT_SECRET || 'valtify-secure-key-2024';
 
 // ===== API ROUTES =====
 
@@ -144,6 +144,15 @@ app.delete('/api/vault/:id', async (req, res) => {
   } catch (error) {
     res.status(401).json({ error: 'Unauthorized' });
   }
+});
+
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    service: 'Valtify',
+    timestamp: new Date().toISOString()
+  });
 });
 
 // ===== FRONTEND =====
@@ -495,5 +504,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(\`🚀 Valtify running on port \${PORT}\`);
+  console.log(`🚀 Valtify running on port ${PORT}`);
 });
