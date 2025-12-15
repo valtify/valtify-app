@@ -1,17 +1,10 @@
 {
   "name": "valtify",
   "version": "1.0.0",
-  "description": "Secure personal data vault",
-  "type": "module",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node server.js",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "install-all": "npm install && cd client && npm install",
-    "render-build": "npm run build && npm prune --production",
-    "setup-db": "node setup-database.js"
+    "build": "npm install && cd client && npm install && npm run build"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -19,15 +12,6 @@
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express-rate-limit": "^7.1.5",
-    "helmet": "^7.0.0"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.1",
-    "nodemon": "^3.0.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "dotenv": "^16.3.1"
   }
 }
