@@ -506,3 +506,4 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Valtify running on port ${PORT}`);
 });
+
