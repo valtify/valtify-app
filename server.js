@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Database connection (Free PostgreSQL from Neon)
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_abc123@ep-cool-darkness-123456.us-east-2.aws.neon.tech/neondb?sslmode=require',
+  connectionString: process.env.DATABASE_URL, // ← Use environment variable
   ssl: { rejectUnauthorized: false }
 });
 
@@ -47,7 +47,7 @@ app.use(require('cors')());
 app.use(express.json());
 
 // JWT secret
-const JWT_SECRET = process.env.JWT_SECRET || 'valtify-secure-key-2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-only-for-dev';
 
 // ===== API ROUTES =====
 
